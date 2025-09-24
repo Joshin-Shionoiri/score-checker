@@ -15,11 +15,11 @@ if option == "照会する":
     password = st.text_input("パスワード", type="password")
 
     if st.button("照会する"):
-        match = df[
-            (df["examId"] == examId) &
-            (df["name"] == name) &
-            (df["dob"] == dob) &
-            (df["password"] == password)
+match = df[
+    (df["examId"] == examId) &
+    (df["password"] == password)
+]
+
         ]
         if not match.empty:
             st.success("照会成功！")
