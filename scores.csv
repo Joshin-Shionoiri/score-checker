@@ -1,4 +1,1 @@
-match = df[
-    (df["examId"] == examId) &
-    (df["password"] == password)
-]
+examId,name,dob,password,score,result,pdf
