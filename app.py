@@ -14,20 +14,19 @@ if option == "照会する":
     dob = st.text_input("生年月日")
     password = st.text_input("パスワード", type="password")
 
-    if st.button("照会する"):
-match = df[
-    (df["examId"] == examId) &
-    (df["password"] == password)
-]
+if st.button("照会する"):
+    match = df[
+        (df["examId"] == examId) &
+        (df["password"] == password)
+    ]
+    if not match.empty:
+        st.success("照会成功！")
+        st.write(f"得点: {match.iloc[0]['score']}")
+        st.write(f"判定: {match.iloc[0]['result']}")
+        st.markdown(f"[PDFリンクはこちら]({match.iloc[0]['pdf']})")
+    else:
+        st.error("照会情報が一致しません。")
 
-        ]
-        if not match.empty:
-            st.success("照会成功！")
-            st.write(f"得点: {match.iloc[0]['score']}")
-            st.write(f"判定: {match.iloc[0]['result']}")
-            st.markdown(f"[PDFリンクはこちら]({match.iloc[0]['pdf']})")
-        else:
-            st.error("照会情報が一致しません。")
 
 elif option == "登録する":
     st.subheader("管理者ログイン")
